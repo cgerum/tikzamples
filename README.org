@@ -1,0 +1,8 @@
+Just a bunch of examples for tikz/pgf.
+
+* Sources 
+
+  These examples are mostly taken from [[http://www.tug.org/pracjourn/2007-1/mertz/][Graphics with PGF and TikZ]]
+  or the [[http://www.ctan.org/tex-archive/graphics/pgf/base/doc/generic/pgf/pgfmanual.pdf][Tikz & PGF Manual]]. 
+
+  Much better examples can be found at [[http://www.texample.net/tikz/examples/][Texample.net]].
