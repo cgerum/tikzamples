@@ -1,0 +1,21 @@
+% A simple Line with Grid TiKZ
+% Author: Christoph Gerum <gerum@informatik.uni-tuebingen.de>
+
+\documentclass{article}
+
+\usepackage{tikz}
+
+
+\begin{document}
+
+\begin{tikzpicture}
+  \draw [step=0.25cm,color=gray] (-1, -1) grid (1, 1);
+
+  \draw (0, 1) -- (1, 0);
+  \draw (0, 1) -- (1, 0) -- (0, -1);
+  \draw (0, 1) -- (1, 0) -- (0, -1) -- (-1, 0);
+  \draw (0, 1) -- (1, 0) -- (0, -1) -- (-1, 0) -- cycle;
+\end{tikzpicture}
+
+
+\end{document}
