@@ -1,21 +1,102 @@
-% Pgfplots demo
-% Author: Christian Feuersänger
-% Source: Pgfplots manual:
-% http://www.ctan.org/tex-archive/help/Catalogue/entries/pgfplots.html
 \documentclass{article}
+\usepackage[utf8]{inputenc}
 
 \usepackage{tikz}
 \usepackage{pgfplots}
-
+\pgfplotsset{compat=1.4}
 
 \begin{document}
+
+
 
 \begin{tikzpicture}
 \begin{axis}[
     xlabel=Benchmark,
     ylabel=Laufzeit,
     ybar,
-    xticklabels={boyer-moore, bubble, gcd, sieve, sumup},
+    xticklabels=data, 
+    x tick label style={rotate=45, anchor=east, color=red}
+]
+
+\addplot+[error bars/.cd, y dir = both, y explicit relative] 
+table [ x=Index, y=Wert, y error=Fehler] {
+Index          Wert    Fehler  
+1      	       30600 	0.1    
+2	       27018 	0.2    
+3	       51000 	0.1    
+4	       18060 	0.4    
+5	       52080    0.5    
+6	       29100 	0.1    
+7	       34512 	0.4    
+8	       30600 	0.05  
+};
+
+\addplot+[error bars/.cd, y dir = both, y explicit relative] 
+table [ x=Index, y=Wert, y error=Fehler] {
+Index   Wert    Fehler
+1	25600 	0.1
+2	47010 	0.2
+3	61000 	0.1
+4	28060 	0.4
+5	12080   0.5
+6	39100 	0.1
+7	24512 	0.4
+8	50600 	0.05
+};
+
+\legend{Simplescalar, SCAR}
+\end{axis}
+\end{tikzpicture}
+
+
+
+
+
+
+\begin{tikzpicture}[scale=1.5]
+\begin{axis}[
+    xlabel=Benchmark,
+    ylabel=Laufzeit,
+    ybar,
+    xtick=data,
+    xticklabels={boyer-moore, bubble, ellip, exp, fibonacci, gcd, sieve, sumup},
+    x tick label style={rotate=45, anchor=east}
+]
+\addplot plot coordinates
+  {
+    (1, 806478)
+    (2, 340228)
+    (3, 10135)
+    (4, 25099)
+    (5, 62102)
+    (6, 57111)
+    (7, 570123)
+    (8, 9592)
+  };
+
+\addplot plot coordinates
+  {
+    (1,59160)
+    (2,230160)
+    (3,7080)
+    (4,21060)
+    (5,8100)
+    (6,6100)
+    (7,136080)
+    (8,6060)
+  };
+\legend{Simplescalar, Model}
+\end{axis}
+\end{tikzpicture}
+
+
+
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel=Benchmark,
+    ylabel=Laufzeit,
+    ybar,
+    xticklabels={,,boyer-moore, bubble, gcd, sieve, sumup},
     x tick label style={rotate=45, anchor=east}
 ]
 \addplot plot coordinates
@@ -26,12 +107,11 @@
 \end{axis}
 \end{tikzpicture}
 
-
 \begin{tikzpicture}
 \begin{axis}[
     xlabel=Benchmark,
     ylabel=Abweichung,
-    xticklabels={boyer-moore, bubble, gcd, sieve, sumup},
+    xticklabels={,,boyer-moore, bubble, gcd, sieve, sumup},
     x tick label style={rotate=45, anchor=east},
     ymajorgrids=true,
     yminorgrids=true
@@ -48,6 +128,11 @@
 \legend{O0,O1,O2,O3}
 \end{axis}
 \end{tikzpicture}
+
+% Pgfplots demo
+% Author: Christian Feuersänger
+% Source: Pgfplots manual:
+% http://www.ctan.org/tex-archive/help/Catalogue/entries/pgfplots.html
 
 
 \begin{tikzpicture}
@@ -144,6 +229,87 @@
     \legend{$d=2$\\$d=3$\\$d=4$\\$d=5$\\$d=6$\\}
 
     \end{loglogaxis}
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.85]
+
+% defining custom colors
+\definecolor{mycolor1}{rgb}{1,0.7,0}
+\definecolor{mycolor2}{rgb}{0.3,0.6,0.2}
+\definecolor{mycolor3}{rgb}{0.2,0.3,0.8}
+
+
+\begin{axis}[
+view={0}{90},
+scale only axis,
+width=5.10588in,
+height=4.02706in,
+xmin=0.5, xmax=3.5,
+ymin=0, ymax=479.038,
+xtick={1,2,3},
+xticklabels={Assoziation,Lern,Test},
+xlabel={Phase des Experiments},
+ylabel={Benötigte Zeit [s]},
+ymajorgrids]
+\addplot[ybar,bar width=0.408471in, bar shift=-0.453856in,fill=mycolor3,draw=black] plot coordinates{ (1,152.189) (2,185.708) (3,160.405) };
+
+\addplot[ybar,bar width=0.408471in, bar shift=0in,fill=mycolor2,draw=black] plot coordinates{ (1,272.288) (2,227.155) (3,202.183) };
+
+\addplot[ybar,bar width=0.408471in, bar shift=0.453856in,fill=mycolor1,draw=black] plot coordinates{ (1,218.906) (2,287.852) (3,176.089) };
+
+\addplot [
+color=black,
+only marks,
+mark=x,
+mark options={solid}
+]
+plot [error bars/.cd, y dir = both, y explicit]
+coordinates{ (1,272.288) +- (0,72.84) (2,227.155) +- (0,102.09) (3,202.183) +- (0,42.583)
+};
+\addplot [
+color=black,
+only marks,
+mark=x,
+mark options={solid}
+]
+plot [error bars/.cd, y dir = both, y explicit]
+coordinates{ (1.27,218.906) +- (0,63.028) (2.27,287.852) +- (0,96.089) (3.27,176.089) +- (0,113.98)
+};
+\addplot [
+color=black,
+only marks,
+mark=x,
+mark options={solid}
+]
+plot [error bars/.cd, y dir = both, y explicit]
+coordinates{ (0.73,152.189) +- (0,76.984) (1.73,185.708) +- (0,147.64) (2.73,160.405) +- (0,52.605)
+};
+
+\addplot [
+color=black,
+solid
+]
+coordinates{ (0.7,425.918) (1,425.918)
+};
+
+\addplot [
+color=black,
+solid
+]
+coordinates{ (0.7,416.337) (0.7,435.499)
+};
+
+\addplot [
+color=black,
+solid
+]
+coordinates{ (1,416.337) (1,435.499)
+};
+
+\node at (axis cs:0.85, 430) {**};
+
+\legend{Basis, Symbol, Wort}
+\end{axis}
 \end{tikzpicture}
 
 
