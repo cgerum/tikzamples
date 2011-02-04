@@ -4,3 +4,11 @@
 *.log
 \#*
 *.dvi
+*.out
+*.toc
+*.figlist
+*.toc
+*.idx
+*.makefile
+*.sh
+pgfplots_*.tex
