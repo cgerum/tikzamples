@@ -20,23 +20,26 @@ dvi: $(DVIFILES)
 	pdflatex $<
 
 %.ps:%.dvi
-	divps $<
+	dvips $<
 
 %.dvi:%.tex
 	latex $<  
 
+.PHONY: echo
 echo:
 	@echo "TEXFILES = " $(TEXFILES)
 	@echo "PDFFILES = " $(PDFFILES)
 	@echo "DVIFILES = " $(DVIFILES)
 	@echo "PSFILES = " $(PSFILES)
 
+.PHONY: clean
 clean:
 	@rm -rf $(PDFFILES)
 	@rm -rf $(DVIFILES)
 	@rm -rf $(PSFILES)
 
-ultraclean:
+.PHONY: ultraclean
+ultraclean: clean
 	@rm -rf *~
 	@rm -rf *.aux
 	@rm -rf *.log
