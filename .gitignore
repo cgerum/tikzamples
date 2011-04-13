@@ -12,3 +12,4 @@
 *.makefile
 *.sh
 pgfplots_*.tex
+*.png
