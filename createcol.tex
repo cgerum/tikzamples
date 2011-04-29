@@ -1,0 +1,39 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\begin{document}
+
+
+\pgfplotstableread{
+X  Test
+1  1
+2  2
+}\tabone
+
+
+
+\pgfplotstableread{
+X Test
+1 2
+2 4
+}\tabtwo
+
+\pgfplotstablecreatecol[copy column from table={\tabone}{Test}]{Scale}{\tabtwo}
+
+\begin{tikzpicture}
+\begin{axis}[ybar]
+              
+              \addplot table  [
+                x = {X},
+                y expr = \thisrow{Test} / \thisrow{Scale}
+              ] {\tabtwo};
+              
+            \end{axis}
+
+\end{tikzpicture}
+
+
+\end{document}
