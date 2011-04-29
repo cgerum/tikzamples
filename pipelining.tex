@@ -7,6 +7,37 @@
 \usepackage{subfig}
 
 \begin{document}
+\begin{figure}[htbp]
+  \begin{center}
+    \begin{tikzpicture}
+      %Achsen
+      \draw (0cm,0cm) -- (12cm,0cm);  %Abzisse
+      \draw (0cm,0cm) -- (0cm,-0.1cm);
+      \draw (12cm,0cm) -- (12cm,-0.1cm) node at (11.9cm, 0cm) [right] {\tiny{Zeit}};
+      
+      \draw (-0.1cm,0cm) -- (-0.1cm,5.5cm);  %Ordinate
+      \draw (-0.1cm,0cm) -- (-0.2cm,0cm); 
+      \draw (-0.1cm,5.5cm) -- (-0.2cm,5.5cm) node at (-0.2,5.65) {\tiny{Befehlsnr.}};
+      
+      \foreach \x in {1,...,10}
+      \draw[gray!50, text=black] (-0.2 cm,\x*0.5 cm) -- (12 cm,\x*0.5 cm) node at (-0.5 cm,\x*0.5 cm - 0.25cm) {\small{\x}};
+      
+      \foreach \pos in {0,...,5}{
+        \fill [fill=red] ( \pos * 0.5 cm, \pos * 0.5  cm) rectangle ( \pos * 0.5 cm + 3 cm , \pos * 0.5  cm + 0.5 cm);
+      }
+      \foreach \pos in {5,...,9}{
+        \fill [fill=yellow] ( \pos * 0.5 cm, \pos * 0.5  cm) rectangle ( \pos * 0.5 cm + 3 cm , \pos * 0.5  cm + 0.5 cm);
+      }
+      \draw [<->] (0cm,-0.3cm) -- node [below] {$c_{bb_1}\ =\ 10 \mbox{cc}$} (5cm,-0.3cm);
+      \draw [<->] (2.5cm,-1cm) -- node [below] {$c_{bb_2}\ =\ 10 \mbox{cc}$} (7cm,-1cm);
+      \draw [<->] (0cm,-1.8cm) -- node [below] {$c_{bb_1,bb_2}\ =\ 15 \mbox{cc}$} (7cm,-1.8cm);
+
+    \end{tikzpicture} 
+  \end{center}
+  \label{fig:lap}
+  \caption{Pipelineüberlappung zweier Basisblöcke am Beispiel einer 6-stufigen Pipeline}
+\end {figure}
+
 
   \begin{figure}[htbp]
     \begin{center}
