@@ -67,3 +67,16 @@ ultraclean: clean
 	@rm -rf pgfshell_*
 	@rm -rf *.toc
 	@rm -rf *.figlist
+	@rm -rf *.pdf
+
+.PHONY: help
+help:
+	@echo "Usage: make <target>"
+	@echo "Targets"
+	@echo "help         display this help"
+	@echo "pdf          create PDF Files"
+	@echo "ps           create Postscript Files"
+	@echo "png          create PNGs from TEX files"
+	@echo ""
+	@echo "clean        delete all result files"
+	@echo "ultraclean   delete all produced Files"

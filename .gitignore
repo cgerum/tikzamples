@@ -13,3 +13,4 @@
 *.sh
 pgfplots_*.tex
 *.png
+*.ps

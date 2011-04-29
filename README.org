@@ -1,5 +1,26 @@
 Just a bunch of examples for tikz/pgf.
 
+* Dependencies
+  
+  - TikZ/PGF
+  - pgfplots
+  - latex
+  - make
+
+  This stuff needs quite recent Versions of tikz/pgf and pgfplots to 
+  compile.
+
+* Usage
+
+  For help use
+
+: make help
+
+  To compile use 
+
+: make pdf
+: make ps
+
 * Sources 
 
   These examples are mostly taken from [[http://www.tug.org/pracjourn/2007-1/mertz/][Graphics with PGF and TikZ]]
